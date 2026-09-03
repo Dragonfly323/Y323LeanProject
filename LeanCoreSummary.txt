@@ -1,0 +1,1229 @@
+Y(3,2,3) — Condensed Pure Mathematical Core
+
+Constants (Exact Definitions)
+
+```
+ω = 1/√2
+s = √3/2
+φ = (1 + √5)/2
+N = 2π/ln φ
+```
+
+Fundamental Identities (Proved Exact)
+
+```lean
+ω² = 1/2                    [omega_sq]
+s² = 3/4                     [s_sq]
+ω² + s² = 5/4                [omega_sq_plus_s_sq]
+φ² = φ + 1                   [φVal28_sq / φ32_sq]
+1/φ = φ - 1                  [φVal28_inv / φ32_inv]
+1 + 1/φ = φ                  [one_plus_inv_φ / one_plus_inv_φ29]
+φ² + φ⁻² = 3                 [φ32_sq_plus_inv_sq]
+```
+
+Nilpotent Block Y_nil (3×3 Matrix)
+
+```
+Y_nil = [[0,     -i,      ω·(-1+i)],
+         [i,      0,      0       ],
+         [ω·(1+i), 0,      0       ]]
+```
+
+Jordan Chain Properties (Proved Exact)
+
+```lean
+Y_nil³ = 0                      [Y_nil_cube_zero]
+Y_nil² ≠ 0                      [Y_nil_sq_ne_zero]
+τ = e₀:  Y²·e₀ = 0,  Y·e₀ ≠ 0  [tau_jordan_length_two, tau_jordan_nontrivial]
+a₁ = e₁: Y²·e₁ ≠ 0, Y³·e₁ = 0  [a1_jordan_length_gt_two, a1_jordan_length_three]
+x = e₂:  Y²·e₂ ≠ 0, Y³·e₂ = 0  [x_jordan_length_gt_two, x_jordan_length_three]
+```
+
+Gram Matrix (Neutrino Mass Spectrum)
+
+```
+Y_nil†·Y_nil = diag(2) ⊕ [[1, i], [-i, 1]]
+```
+
+Eigenvalue Spectrum (Proved Exact)
+
+```lean
+gram eigenvalues = {0, 2, 2}    [gram_eigenvalues]
+```
+
+Massless Neutrino (Proved Exact)
+
+```lean
+nuMasslessVec = [0, -i, 1]      [nuMasslessVec]
+Y_nil·nuMasslessVec = 0         [massless_neutrino]
+nuMasslessVec ≠ 0               [nuMasslessVec_nonzero]
+```
+
+Massive Eigenvectors (Proved Exact)
+
+```lean
+τ direction:  gram·[1,0,0] = 2·[1,0,0]     [gram_tau_eigenvalue]
+heavy mode:   gram·[0,i,1] = 2·[0,i,1]     [gram_heavy_eigenvalue]
+```
+
+Seesaw Mechanism (Exact Theorems)
+
+Coupling Ratio
+
+```lean
+ω²/s = 1/√3                    [cascade_coupling_ratio]
+```
+
+Third Winding Identity
+
+```lean
+φ^(3N) = e^(6π)                [φ_to_3N_eq_e6pi]
+φ^N = e^(2π)                   [phi_N_eq_e2pi / φ32_to_N_eq_e2pi]
+```
+
+Base Seesaw Mass
+
+```lean
+m_ν_base = mₑ / (√3 · e^(6π))  [seesaw_mass_e6pi]
+```
+
+W/Z Boson Mass Ratio
+
+Tree Level
+
+```lean
+sin²θ_W = 3/N                  [weinbergSinSq]
+(m_W/m_Z)_tree = √(1 - 3/N)    [wz_ratio_tree_eq]
+```
+
+Delta Rho Correction
+
+```lean
+Δρ = φ^(2φ) / (48·ln φ·e^π)    [deltaRho]
+```
+
+Corrected Ratio
+
+```lean
+m_W/m_Z = √(1 - 3/N)·(1 + Δρ/2) [wz_ratio_corrected]
+```
+
+Key Exact Identities
+
+```lean
+n_top - n_W = φ                 [top_w_step_difference]
+n_top - n_H = 1/φ              [top_higgs_level_diff]
+n_H - n_W = 1                  [higgs_w_level_diff]
+```
+
+Higgs Boson Mass
+
+Base Prediction
+
+```lean
+φ^(2N) = e^(4π)                [φ_to_2N_eq_e4pi]
+m_H_base/m_e = e^(4π)·√3/2     [higgsMassRatio_base_eq]
+```
+
+Correction
+
+```lean
+δ_H = φ^(2φ-2) / (6·e^π)       [deltaHiggs]
+δ_H = 8·Δρ·ln φ/φ²             [deltaHiggs_from_deltaRho]
+```
+
+Corrected Mass
+
+```lean
+m_H_corrected = m_H_base·(1 - δ_H) [higgsMassRatio_corrected]
+```
+
+Neutrino Mass Correction (Jordan Chain)
+
+Gap Factor
+
+```lean
+gap = 2N = 4π/ln φ             [gapFactor32_eq]
+```
+
+Corrected Neutrino Mass
+
+```lean
+m_ν_corrected = 2N·mₑ/(√3·e^(6π)) [m_ν_corrected32_explicit]
+```
+
+Higgs-Neutrino Invariant
+
+```lean
+m_ν_corrected·m_H_base/mₑ² = N/e^(2π) = N·φ^(-N)
+                                   [higgs_neutrino_invariant_phi]
+```
+
+Continuum Parameters (Exact)
+
+```lean
+μ = 3/16                       [μ_param_val]
+freq = ln φ                    [cascadeFreq_eq_ln_φ]
+ν = λ·(ln φ)²                  [ν_param_eq]
+λ/μ = (N/π)²                   [spectral_balance_ratio]
+κ = (ln φ)²/(2πG)              [κ_param_eq]
+```
+
+Mode Cancellation
+
+```lean
+modeResidual(n) = -λ·freq²·(n² - 1)  [higher_mode_residual]
+modeResidual(1) = 0                   [fundamental_mode_cancels]
+modeResidual(2) < 0                   [mass_gap_neg]
+```
+
+Numerical Bounds (Proved)
+
+```lean
+φ ∈ (1.618, 1.6181)            [φ27_gt_1618, φ27_lt_16181]
+ln φ ∈ (0.481, 0.482)          [lnPhi_gt_0481, lnPhi_lt_0482]
+N ∈ (13.03, 13.07)             [N27_gt_1303, N27_lt_1307]
+2N ≈ 26.11                     [gapFactor32_gt_25]
+κG = (ln φ)²/(2π) ∈ (0.0368, 0.037) [kappaG_bounds]
+```
+
+Summary of Exact Predictions
+
+Quantity Exact Expression Numerical
+m_ν_base mₑ/(√3·e^(6π)) ~1.91 meV
+m_ν_corrected 2N·mₑ/(√3·e^(6π)) ~49.9 meV
+m_W/m_Z √(1-3/N)·(1+Δρ/2) 0.88153
+m_H e^(4π)·√3/2·(1-δ_H)·mₑ ~125.2 GeV
+
+Open Gaps
+
+Section Gap Status
+§31 Yⁱ_jk algebra (T operator) Axiomatized, not proved
+§32 0.7% neutrino mass residual Next layer §33
+§23 Full stress-energy tensor Axiomatic, requires Mathlib
+§20-26 Curved space completion Partial, axiomatic
+
+
+###
+
+
+Y(3,2,3) — Condensed Pure Mathematical Core (Sections 33-41)
+
+Section 33: The Observer Magnitude and Neutrino Partition
+
+Golden Identity (Exact)
+
+```lean
+φ² + φ⁻² = 3                    [φ33_sq_plus_inv_sq]
+```
+
+S₃ Fixed-Point Theorem (Exact)
+
+```lean
+S₃ acts transitively on M-sector {a₂, b₁, b₂, η}
+→ unique invariant distribution is uniform
+→ |a₂| = 1/4                     [mSector_magnitude_quarter]
+```
+
+Neutrino Unit Partition (Exact)
+
+```lean
+m₀ = 1/4                         (massless/observer)
+m₁ = (1/4)·φ²                    (heavy ν₁)
+m₂ = (1/4)·φ⁻²                   (heavy ν₂)
+m₀ + m₁ + m₂ = 1                 [neutrino_unit_partition]
+m₁/m₂ = φ⁴                       [heavy_magnitude_ratio]
+```
+
+Complementary Stabilizers
+
+```lean
+massless mode [0,-I,1]: U(1) phase symmetry (continuous)
+observer a₂: S₃ discrete symmetry (order 6)
+S₃ does NOT preserve massless mode  [s3_moves_massless_mode]
+```
+
+---
+
+Section 34: PMNS Mixing Angles from Gram Eigenvectors
+
+Mass Eigenstates (Exact from §30)
+
+```lean
+ν₁ = [1, 0, 0]                   Gram eigenvalue 2
+ν₂ = [0, I, 1]/√2               Gram eigenvalue 2
+ν₃ = [0, -I, 1]/√2              Gram eigenvalue 0
+```
+
+Leading-Order PMNS Matrix (Exact)
+
+```lean
+|U_PMNS|² = [[1,   0,   0],
+             [0, 1/2, 1/2],
+             [0, 1/2, 1/2]]      [U_PMNS_sq_explicit]
+```
+
+Mixing Angles (Exact at Leading Order)
+
+```lean
+θ₂₃ = π/4                       maximal atmospheric  [theta23_eq_pi_over_four]
+θ₁₃ = 0                         reactor angle        [theta13_eq_zero]
+θ₁₂ = 0                         solar angle          [theta12_zero]
+δ = π/2                         CP phase             [U_PMNS_11_phase]
+```
+
+Origin of Maximal Mixing (Exact)
+
+```lean
+M = [[1, I], [-I, 1]]           2×2 block from Gram
+eigenvectors have equal |νμ| = |ντ| components  [maximal_mixing_origin]
+```
+
+---
+
+Section 35: Reactor Angle from Jordan Depth Asymmetry
+
+W⁺ Coupling Norms (Exact from §31)
+
+```lean
+‖W⁺(ν_τ)‖² = 1/2               [Wplus_tau_norm_sq]
+‖W⁺(ν_heavy)‖² = 5/4           [Wplus_heavy_norm_sq]
+|⟨W⁺(ν_τ)|W⁺(ν_heavy)⟩|² = 1/4 [Wplus_overlap_sq]
+```
+
+Raw Mixing (Exact)
+
+```lean
+sin²θ₁₃^(raw) = 2/5             [sin2_theta13_raw]
+```
+
+Cascade Running (Suppression)
+
+```lean
+sin θ₁₃^(0) = √(2/(5N))         [sin_theta13_leading_eq]
+Bounds: 0.155 < sin θ₁₃^(0) < 0.195  [sin_theta13_leading_range]
+```
+
+Correction Factor (Candidate)
+
+```lean
+δ₁₃ = φ^(2φ)/(2·e^π)           [δ₁₃_candidate]
+sin θ₁₃ = √(2/(5N))·(1 - δ₁₃)   [sin_theta13_structure]
+```
+
+Correction Family
+
+```lean
+δ₁₃/Δρ = 24·ln φ                [correction_family]
+```
+
+---
+
+Section 36: Solar Angle from Degenerate Mode Splitting
+
+Jordan Depths (Exact from §6)
+
+```lean
+depth(τ) = 2                     [depth_tau]
+depth(heavy mode) = 3            [depth_heavy]
+depth_heavy - depth_tau = 1      [depth_difference]
+depth_ratio = 3/2                [depth_ratio_eq]
+```
+
+Cascade Levels
+
+```lean
+level_τ = 2N                     [level_tau36]
+level_heavy = 3N                 [level_heavy36]
+level_τ/level_heavy = 2/3        [level_ratio]
+```
+
+Mass Scales (Exact)
+
+```lean
+Δm²_atm ∝ φ^(6N) = e^(12π)      [atm_mass_sq_scale]
+Δm²_sol ∝ φ^(4N) = e^(8π)       [sol_mass_sq_scale]
+Δm²_sol/Δm²_atm = e^(-4π)       [splitting_ratio_exact]
+```
+
+Solar-Higgs Duality (Exact)
+
+```lean
+(Δm²_sol/Δm²_atm)·e^(4π) = 1    [solar_higgs_inverse]
+```
+
+Leading Solar Angle
+
+```lean
+tan²θ₁₂^(0) = 1/(2N)            [tan_sq_theta12_eq]
+sin²θ₁₂^(0) = 1/(2N+1)          [sin_sq_theta12_leading_eq]
+Bounds: 0.034 < sin²θ₁₂^(0) < 0.040  [sin_sq_theta12_range]
+```
+
+Enhancement (Candidate)
+
+```lean
+E₁₂ = N/φ                       [E12_candidate]
+sin²θ₁₂ = (1/(2N+1))·(N/φ)      [sin_sq_theta12_enhanced]
+```
+
+---
+
+Section 37: Complete PMNS Matrix
+
+Cascade PMNS Structure
+
+```lean
+U = D_M · U₀ · D_φ              [U_PMNS_cascade]
+```
+
+Factors
+
+```lean
+U₀ = [[1, 0, 0],
+      [0, I/√2, -I/√2],
+      [0, 1/√2, 1/√2]]          [U₀]
+
+D_M = diag(1, e^(iα₁), e^(iα₂))  Majorana phases
+α₁ = π·ln φ/2                   [α₁]
+α₂ = -π·ln φ/2                  [α₂]
+α₁ = -α₂                        [majorana_phases_conjugate]
+
+D_φ = diag(1, 1, e^(-2πi))      Cascade running
+```
+
+Exact Predictions
+
+```lean
+(1) θ₂₃ = π/4                   maximal atmospheric
+(2) δ = π/2                     CP phase
+(3) m₃ = 0                      massless neutrino
+(4) inverted hierarchy          m₁ ≈ m₂ >> m₃
+(5) |α₁| = |α₂|                 Majorana phases equal
+(6) U₀ is unitary               [U₀_unitary]
+```
+
+---
+
+Section 38: Generative Matrix and Bridge Theorem
+
+Generative Matrix Y_gen
+
+```lean
+Differs from Y₃₂₃ only at τ-x coupling:
+Y_gen[0,5] = -e^(-iπ/4)         vs Y₃₂₃[0,5] = -(1+I)/√2
+Y_gen[5,0] = e^(iπ/4)           vs Y₃₂₃[5,0] = (1+I)/√2
+```
+
+Key Identity (Exact)
+
+```lean
+Y_gen[0,5] = conj(Y₃₂₃[0,5])   [gen_is_conj_of_collapsed]
+```
+
+Eigenvalues (Native Magnitudes)
+
+```lean
+λ₁ = -i            magnitude 1
+λ₂ = -1            magnitude 1
+λ₃ = e^(iπ/4)·√2  magnitude √2
+λ₄ = e^(-iπ/4)·√2 magnitude √2
+λ₅ = i√3          magnitude √3
+λ₆ = -i√3         magnitude √3
+λ₇ = 0             magnitude 0
+```
+
+Zero Mode
+
+```lean
+Y_gen has det = 0               [Y_gen_det_zero]
+zero mode projects to a₂         [bridge_theorem]
+```
+
+Phase Difference (Exact)
+
+```lean
+arg(Y_gen[5,0]) - arg(Y₃₂₃[5,0]) = -π/2  [cp_phase_is_collapse_difference]
+This is the CP phase δ = π/2
+```
+
+Cascade Triangle (Exact)
+
+```lean
+φ^(2N)·φ^(-3N)·φ^N = 1         [cascade_triangle]
+2N - 3N + N = 0                 [cascade_triangle_balance]
+```
+
+Bifurcation Phase
+
+```lean
+bp = e^(iπ/4)                   [bifurcation_phase]
+bp^8 = 1                        [bifurcation_phase_period]
+```
+
+---
+
+Section 39: Generative Dynamics — Sedenion Frame
+
+Native Eigenvalues (Sedenion Magnitudes)
+
+```lean
+|λ₁| = |λ₂| = 1
+|λ₃| = |λ₄| = √2               native sedenion
+|λ₅| = |λ₆| = √3
+|λ₇| = 0
+```
+
+Shadow Magnitudes (Collapsed Projection)
+
+```lean
+|λ₃_shadow| = |λ₄_shadow| = 1   [λ₃_shadow_mag, λ₄_shadow_mag]
+```
+
+Hopf Fiber (Exact)
+
+```lean
+|λ₃_native| / |λ₃_shadow| = √2  [hopf_fiber]
+```
+
+Conjugate Pairs
+
+```lean
+Temporal: λ₁² = λ₂              [temporal_relation]
+Bifurcation: λ₃·λ₄ = 2          [bifurcation_product_native]
+Harmonic: λ₅·λ₆ = 3, λ₅² = -3   [harmonic_product, harmonic_sq]
+```
+
+Magnitude Sums (Exact)
+
+```lean
+Sedenion sum = 12               [magnitude_sq_sum_sedenion]
+Collapsed sum = 10              [magnitude_sq_sum_collapsed]
+Difference = 2 = (√2)²          [sedenion_minus_collapsed_is_fiber]
+```
+
+Periods
+
+```lean
+λ₁^4 = 1                        [λ₁_period]
+λ₂^2 = 1                        [λ₂_period]
+bp^8 = 1                        [bifurcation_period]
+```
+
+Imaginary Balance (Exact)
+
+```lean
+Im(λ₃ + λ₄) = 0, Im(λ₅ + λ₆) = 0  [imaginary_balance]
+Σ Im(λₖ) = 0                    [total_imaginary_sum]
+```
+
+Three Octonion Subalgebras
+
+```lean
+1. Temporal-active: creates (λ₁,λ₂,λ₃,λ₄)
+2. Material-active: stabilizes (λ₅,λ₆)
+3. Witnessing: zero mode λ₇=0 (internal observer)
+```
+
+---
+
+Section 40: The Invariants — What Survives Collapse
+
+The Root Identity
+
+```lean
+φ² + φ⁻² = 3                   [golden_root_identity]
+This generates all invariants
+```
+
+The Ten Invariants
+
+I. Cascade Triangle (Exact)
+
+```lean
+φ^(2N)·φ^(-3N)·φ^N = 1         [invariant_I_cascade_triangle]
+```
+
+II. Unit Partition (Exact)
+
+```lean
+1/4 + (1/4)φ² + (1/4)φ⁻² = 1   [invariant_II_unit_partition]
+```
+
+III. Maximal Mixing (Exact)
+
+```lean
+sin²(π/4) = 1/2                [invariant_III_maximal_mixing]
+```
+
+IV. CP Phase (Exact)
+
+```lean
+δ = π/2 = 2·(π/4)              [invariant_IV_cp_phase]
+```
+
+V. Massless Neutrino (Exact)
+
+```lean
+Y_nil·[0,-I,1] = 0             [masslessVec, invariant_V]
+```
+
+VI. Observer Magnitude (Exact)
+
+```lean
+|a₂| = 1/4                     [invariant_VI_observer_quarter]
+```
+
+VII. Fano Period (Exact)
+
+```lean
+(e^(iπ/4))⁸ = 1                [invariant_VII_fano_period]
+```
+
+VIII. Harmonic Square (Exact)
+
+```lean
+(i√3)² = -3                    [invariant_VIII_harmonic_sq]
+```
+
+IX. Temporal Relation (Exact)
+
+```lean
+(-i)² = -1                     [invariant_IX_temporal]
+```
+
+X. Imaginary Balance (Exact)
+
+```lean
+Im(Σλₖ) = 0                    [invariant_X_balance]
+```
+
+The Three Generators
+
+```lean
+φ   — golden ratio (self-similarity)
+N   — cascade period (winding)
+π/4 — Fano angle (bifurcation, CP phase)
+```
+
+---
+
+Section 41: Reconstruction — From Shadow to Light
+
+The Reconstruction Map
+
+```lean
+Given Y_collapsed, reconstruct Y_gen by replacing:
+Y_collapsed[5,0] = (1+I)·ω  →  Y_gen[5,0] = e^(iπ/4)
+Y_collapsed[0,5] = -(1+I)·ω →  Y_gen[0,5] = -e^(-iπ/4)
+```
+
+Reconstruction Theorem (Exact)
+
+```lean
+reconstruct Y_collapsed = Y_gen  [reconstruction_correct]
+All other entries preserved      [reconstruction_preserves_noncoupling]
+```
+
+Coupling Magnitudes (Equal)
+
+```lean
+|collapsed_coupling| = |generative_coupling| = 1
+                                       [couplings_same_magnitude]
+```
+
+Phase Difference (Exact)
+
+```lean
+arg(Y_gen[5,0]) - arg(Y_collapsed[5,0]) = -π/2
+                                       [collapse_signature]
+The CP phase δ = π/2 is the collapse signature
+```
+
+The Fiber Freedom
+
+```lean
+Y_gen_family(θ): coupling = e^(i(π/4+θ))  [Y_gen_family]
+All members:
+- Same invariants [invariants_global_phase_independent]
+- Same magnitude structure
+- Related by global phase rotation
+- Project to same Y_collapsed
+```
+
+Global Phase θ (Unobservable)
+
+```lean
+θ ∈ S¹                          [global_phase_is_circle]
+θ cannot be determined from any measurement
+θ is destroyed by collapse
+θ is the moment in the Fano cycle
+The collapse fixes θ = 0 by convention
+```
+
+Reconstruction Summary (Exact)
+
+```lean
+reconstruction theorem:
+- Y_gen can be reconstructed from Y_collapsed + invariants
+- Reconstruction changes only coupling phase: π/4 vs 3π/4
+- Phase difference = π/2 = CP phase = collapse signature
+- Remaining freedom: global phase θ ∈ S¹
+- θ cannot be determined from any measurement
+- θ is destroyed by collapse, leaving CP phase as its mark
+- Fano period 8 characterizes the orbit
+- All invariants are θ-independent
+- Shadow contains all physical information
+- Dream contains one more thing: the moment
+```
+
+---
+
+Master Chain of Exact Results
+
+Level 1: Discrete Structure (§§1-19)
+
+```lean
+Y_nil (3×3, nilpotent)
+ω² = 1/2, s² = 3/4
+N = 2π/ln φ
+φ² = φ+1
+Jordan depths: {2,3,3}
+```
+
+Level 2: Neutrino Sector (§§30-32)
+
+```lean
+Gram eigenvalues: {0,2,2}
+Massless neutrino: [0,-I,1]
+m_ν_base = mₑ/(√3·e^(6π))
+m_ν_corrected = 2N·mₑ/(√3·e^(6π))
+φ²+φ⁻²=3
+```
+
+Level 3: Mixing Angles (§§33-37)
+
+```lean
+θ₂₃ = π/4 (exact)
+δ = π/2 (exact)
+sin θ₁₃ = √(2/(5N))·(1 - φ^(2φ)/(2e^π))
+sin²θ₁₂ = (1/(2N+1))·(N/φ)
+```
+
+Level 4: Generative Structure (§§38-41)
+
+```lean
+Y_gen = reconstruct(Y_collapsed)
+arg difference = π/2
+Hopf fiber = √2
+Native eigenvalues: {0,1,1,√2,√2,√3,√3}
+Three octonion subalgebras
+Ten invariants survive collapse
+Reconstruction exact up to global phase θ
+```
+
+
+###
+
+
+Y(3,2,3) — Condensed Pure Mathematical Core (Sections 42-52)
+
+Section 42: The Oscillatory Subspace and Period-2 Orbit
+
+V_osc Definition (Exact)
+
+```lean
+V_osc = ker(Y_re² + ½·I)         4-dimensional subspace
+Basis: {e_τ, e_b₂, e_x, v₄}
+v₄ = -√(2/3)·e_{a₂} - (1/√3)·e_{b₁}
+```
+
+Y_osc Matrix in V_osc Basis (Exact)
+
+```lean
+Y_osc = [[0, -ω,  0,  0],
+         [ω,  0,  0,  0],
+         [0,  0,  0,  α],
+         [0,  0, -β,  0]]
+where α = 1/√6, β = √(3/2)
+```
+
+Coupling Invariants (Exact)
+
+```lean
+α·β = 1/2                    [coupling_product]
+β/α = 3                      [coupling_ratio]
+√(α·β) = ω                   [coupling_geom_mean]
+ω·β = √3/2 = s               [coupling_spiral]
+```
+
+V_osc Membership (Exact)
+
+```lean
+Y_re²·v = -(1/2)·v for all v ∈ V_osc  [Y_re_sq_vosc]
+```
+
+Period-2 Orbit (Exact)
+
+```lean
+Φ_re = fold ∘ renorm ∘ Y_re
+Φ_re²(s) ∈ {s, -s} for all unit s ∈ V_osc  [projective period-2]
+```
+
+Decoupling (Exact)
+
+```lean
+τ ↔ b₂ pair: Y_re maps span{τ,b₂} to itself  [τ_b₂_decoupled]
+x ↔ v₄ pair: τ-component always 0 (fold inert)  [x_v₄_tau_zero]
+```
+
+---
+
+Section 43: Fold as Externalized Third-Subalgebra Witness
+
+The Fold Map (Exact)
+
+```lean
+fold(v) = v if v[τ] ≥ 0, else -v   [fold]
+fold enforces τ ≥ 0                 [fold_tau_nonneg]
+fold is Z₂ action: fold(v) ∈ {v, -v}  [fold_is_Z₂]
+fold² = Id                          [fold_involution]
+```
+
+Y_re Actions (Exact)
+
+```lean
+Y_re·e_τ = ω·e_b₂                  [Y_re_first_to_second]
+Y_re·e_b₂ = -ω·e_τ                 [Y_re_second_to_first]
+Y_re²·e_τ = -(1/2)·e_τ             [Y_re_contracts_without_witness]
+```
+
+Without Fold (Exact)
+
+```lean
+renorm(Y_re·(renorm(Y_re·e_τ))) = -e_τ  [Y_re_without_fold_gives_antipode]
+```
+
+With Fold (Exact)
+
+```lean
+Φ_re(e_τ) = e_b₂                    [orbit_N_to_M]
+Φ_re(e_b₂) = e_τ                    [orbit_M_to_N]
+Φ_re²(e_τ) = e_τ                    [τ_b₂_exact_period2]
+fold(-e_τ) = e_τ                    [fold_corrects_return]
+```
+
+Three Roles (Exact)
+
+```lean
+CREATE (first subalgebra): τ → b₂   [Y_re_first_to_second]
+STABILIZE (second subalgebra): b₂ → -τ  [Y_re_second_to_first]
+WITNESS (third subalgebra): fold corrects -τ → +τ  [fold_corrects_return]
+```
+
+---
+
+Section 44: Neutrino Mass Structure and φ²+0+φ⁻²=3 Identity
+
+Gram Matrix G = Y_nil†·Y_nil (Exact)
+
+```lean
+G = diag(2) ⊕ [[1, I], [-I, 1]]  [G_nil_explicit]
+τ decouples from {a₁,x}          [G_nil_tau_decouples]
+Eigenvalues: {0, 2, 2}           [gram_leading_order]
+```
+
+Massless Neutrino (Exact)
+
+```lean
+v_massless = [0, -1/√2, -1/2 + i/2]  [v_massless]
+G·v_massless = 0                     [G_nil_kills_massless]
+τ-component = 0                      [massless_tau_zero]
+```
+
+Massive Modes (Exact)
+
+```lean
+v_tau = [1, 0, 0]                    [v_tau]
+G·v_tau = 2·v_tau                    [G_nil_v_tau]
+τ-component = 1                      [v_tau_tau_nonzero]
+```
+
+Seesaw Identity (Exact)
+
+```lean
+φ² + 0 + φ⁻² = 3                    [seesaw_identity]
+Heavy > 1 > light > 0               [three_neutrino_weights]
+```
+
+Atmospheric Mass Prediction (Exact)
+
+```lean
+m_ν_atm = 2N·mₑ/(√3·e^{6π})        [m_ν_atm_explicit]
+m_ν_atm·m_H/mₑ² = N/e^{2π}          [higgs_neutrino_cascade_invariant]
+```
+
+---
+
+Section 45: Jordan Chain Depth Correction
+
+Correction Structure (Exact)
+
+```lean
+δG = diag(ω², 0, 0)                 [δG_explicit]
+ω² = 1/2                            [ω_sq]
+Correction only affects τ entry     [correction_only_tau]
+```
+
+Corrected Gram Matrix (Exact)
+
+```lean
+G_full = [[5/2, 0, 0],
+          [0, 1, I],
+          [0, -I, 1]]              [G_full_explicit]
+Eigenvalues: {0, 2, 5/2}           [G_full_v_tau]
+```
+
+Massless Unaffected (Exact)
+
+```lean
+G_full·v_massless = 0               [G_full_kills_massless]
+v_massless·τ = 0                    [v_massless_tau_zero]
+```
+
+Fold-Invisible States (Exact)
+
+```lean
+If v has τ=0, then δG·v = 0         [fold_invisible_uncorrected]
+{a₁,x} block determinant still zero  [G_full_ax_det_zero]
+```
+
+τ Mode Lifted (Exact)
+
+```lean
+G_full·v_tau = (5/2)·v_tau          [G_full_v_tau]
+5/2 = 2 + ω²                        [ω_coupling_unifies]
+```
+
+---
+
+Section 46: The §33 Gap — Precise Formulation
+
+The Gap Factor
+
+```lean
+k_running = (m_atm/m_sol)/(gram_tau/gram_mix)  [k_running]
+gram_tau/gram_mix = 5/4                         [gram_ratio]
+k_running ≈ 4.565                               [k_running_value]
+```
+
+Gap Exponent Bounds (Exact)
+
+```lean
+φ³ < k_running < φ⁴                   [k_running_gt_φ3, k_running_lt_φ4]
+3 < log(k_running)/log(φ) < 4         [gap_exponent_bounds]
+```
+
+Quarter-Winding Identity (Exact)
+
+```lean
+φ^(N/4) = e^(π/2)                    [quarter_winding]
+```
+
+Quarter-Winding Prediction
+
+```lean
+ratio_pred = (5/4)·e^(π/2)           [ratio_quarter_winding_eq]
+ratio_pred ≈ 6.013                    [quarter_winding_overshoots]
+Observed: 5.706                        [observed_ratio_past_threshold]
+Error: 5.4%                            [quarter_winding_error_bound]
+```
+
+Correction Factor Bounds (Exact)
+
+```lean
+1 < C_correction < √φ                 [C_correction_gt_one, C_correction_lt_sqrt_φ]
+```
+
+---
+
+Section 47: Chaos Threshold Structure
+
+Chaos Eigenvalues (Exact)
+
+```lean
+λ₊ = s² + ω² = 5/4                    [λ_plus_eq]
+λ₋ = s² - ω² = 1/4                    [λ_minus_eq]
+λ₊/λ₋ = 5                             [chaos_threshold_ratio]
+λ₊ + λ₋ = 3/2                         [chaos_eigenvalue_sum_eq]
+λ₊ - λ₋ = 1                           [chaos_eigenvalue_diff_eq]
+```
+
+Gram Ratio Connection (Exact)
+
+```lean
+gram_tau/gram_mix = λ₊ = 5/4          [gram_ratio_eq_λ_plus]
+```
+
+Bounds (Exact)
+
+```lean
+5 < m_atm/m_sol < (5/4)·e^(π/2)       [ratio_sandwiched]
+5 < observed < 6.013                   [observed_ratio_past_threshold]
+```
+
+---
+
+Section 48: Mass Ratio Formula
+
+Projection Weights (Exact)
+
+```lean
+P₁ = ω²/λ₊ = 2/5                      [P₁_eq]
+P₂ = s²/λ₊ = 3/5                      [P₂_eq]
+P₁ + P₂ = 1                            [P_partition]
+P₁·λ₊ = ω², P₂·λ₊ = s²                [P₁_times_λ₊, P₂_times_λ₊]
+```
+
+Mass Ratio Formula (Exact)
+
+```lean
+ratio(μ) = (λ₊ + μ·P₁)/(λ₋ + μ·P₂)   [ratio_formula]
+ratio(μ) = (25 + 8μ)/(5 + 12μ)        [ratio_formula_explicit]
+ratio(0) = 5                           [ratio_at_zero]
+```
+
+Monotonicity (Exact)
+
+```lean
+ratio strictly decreasing in μ         [ratio_decreasing_in_μ]
+For μ < 0: ratio > 5                   [ratio_gt_five_for_neg_μ]
+```
+
+Best Candidate (Exact)
+
+```lean
+μ_candidate = -1/16                    [μ_candidate_eq]
+ratio(-1/16) = 98/17 ≈ 5.7647          [ratio_candidate_eq]
+Error: ~1%                              [ratio_candidate_approx]
+```
+
+Existence (Exact)
+
+```lean
+∃! μ* ∈ (-1/16, 0) giving observed ratio  [exists_unique_μ_star]
+```
+
+---
+
+Section 49: Fano Products and Stone Projections
+
+Fano Products (Structural)
+
+```lean
+τ·a₂ = -η                              [oct_tau_a2_eq_neg_eta]
+a₁·a₂ = b₂                             [oct_a1_a2_eq_b2]
+x·a₂ = b₁                              [oct_x_a2_eq_b1]
+```
+
+Stone Attractor Values (Exact)
+
+```lean
+a₂ = 1/4, b₁ = 1/4                     [Stone_a2, Stone_b1]
+b₂ = 1/√2                              [Stone_b2]
+|η|² = 3/8                             [Stone_eta_sq]
+```
+
+Fano Projection Weights (Exact)
+
+```lean
+w_τ = 3/8, w_a₁ = 1/2, w_x = 1/16     [w_τ_eq, w_a1_eq, w_x_eq]
+w_τ + w_a₁ + w_x = 15/16               [fano_weights_sum]
+```
+
+Projections (Exact)
+
+```lean
+τ-pure: 3/8                             [fano_proj_tau_pure]
+mix: 5/32                               [fano_proj_mix]
+massless: 13/32                         [fano_proj_massless]
+τ/mix ratio = 12/5                      [fano_ratio_tau_to_mix]
+Massless > τ > mix projection           [fano_massless_beats_mix]
+```
+
+Key Insight (Exact)
+
+```lean
+masslessness ≠ fold-invisibility       [fano_massless_nonzero]
+Massless has τ=0 for Gram but nonzero Fano projection
+```
+
+---
+
+Section 50: The Yo-Yo — Spectral Balance
+
+Complete Spectrum of Y†Y (Exact)
+
+```lean
+{0 (×3), (7-√17)/8 (×2), (7+√17)/8 (×2), 3 (×2)}
+```
+
+Middle Pair (Exact)
+
+```lean
+Sum = 7/4                              [middle_sv_sum]
+Product = 1/2 = ω²                     [middle_sv_product_eq_ω_sq]
+Quadratic: 4x² - 7x + 2 = 0            [middle_sv_quadratic]
+Discriminant = 17                      [middle_quadratic_discriminant]
+```
+
+Spectral Invariants (Exact)
+
+```lean
+‖Y‖_F² = 19/2                          [frobenius_norm_sq]
+Tr(Y†Y) = 19/2                         [trace_YdY]
+String tension = ω²                    [string_tension]
+Extension energy = 7/2                 [extension_energy]
+```
+
+Yo-Yo Interpretation
+
+```lean
+Rest state would be {0,1,1,2,2,3,3}
+Actual has √17 in middle pair
+√17 = √(49-32) = √(7²-4·4·2)
+```
+
+---
+
+Section 51: Observer Implies the Unit
+
+Four Base Values (Exact)
+
+```lean
+Stone_a₂ = 1/4                         [Stone_a2_eq]
+Stone_λ = 1                            [Stone_λ_eq]
+λ₋ = 1/4                               [λ₋_eq]
+λ₊ = 5/4                               [λ₊_eq]
+```
+
+Six Core Identities (Exact)
+
+```lean
+1. Stone_a₂ = λ₋                       [observer_is_lower_eigenvalue]
+2. Stone_λ = λ₊ - λ₋                   [unit_mode_is_eigenvalue_gap]
+3. λ₊ = Stone_λ + Stone_a₂             [chaos_threshold_eq_unit_plus_observer]
+4. Stone_a₂ = s² - ω²                  [observer_is_spiral_minus_bridge]
+5. s² = (Stone_a₂ + λ₊)/2              [s_sq_is_mean]
+6. λ₊ - Stone_a₂ = Stone_λ             [gap_is_stone_eigenvalue]
+```
+
+Root Identity (Exact)
+
+```lean
+2ω² = Stone_λ = 1                      [bridge_generates_unit]
+```
+
+The Flip (Exact)
+
+```lean
+Observer: s² - ω² (subtraction)
+Chaos: s² + ω² (addition)
+Difference = 2ω² = 1                   [observer_chaos_difference]
+```
+
+---
+
+Section 52: String Tension Fluctuation
+
+Middle SV² Values (Exact)
+
+```lean
+σ₋ = (7 - √17)/8                      [σ₋]
+σ₊ = (7 + √17)/8                      [σ₊]
+```
+
+Mean and Standard Deviation (Exact)
+
+```lean
+μ = 7/8                                [μ_eq]
+σ = √17/8                              [σ_eq]
+σ₋ = μ - σ                             [lower_sv_is_mean_minus_std]
+σ₊ = μ + σ                             [upper_sv_is_mean_plus_std]
+```
+
+Variance (Exact)
+
+```lean
+σ² = 17/64                             [variance_eq]
+σ₊ - σ₋ = √17/4                        [eigenvalue_gap_eq]
+σ/μ = √17/7                            [fluctuation_ratio]
+μ/σ = 7/√17                            [signal_to_noise]
+```
+
+Discriminant (Exact)
+
+```lean
+17 = 7² - 4·4·2                        [discriminant_17]
+17 = 8²·μ² - 4·8²·ω²                  [discriminant_from_mean_product]
+```
+
+Frobenius Norms (Exact)
+
+```lean
+‖Y_re‖_F = 2                           [Y_re_frobenius]
+‖Y‖_F² = 19/2                          [Y_frobenius_sq]
+‖Y‖_F² - ‖Y_re‖_F² = 11/2              [imaginary_contribution]
+```
+
+VEVs on Different Sectors (Exact)
+
+```lean
+V_osc: ω² = 1/2                        [vev_vosc]
+Middle: μ = 7/8                        [vev_middle]
+Full S⁶: 19/14                         [vev_full]
+Ordering: 1/2 < 7/8 < 19/14            [vev_ordering]
+```
+
+---
+
+Master Chain: Sections 42-52
+
+Level 4: Dynamics (§§42-43)
+
+```lean
+V_osc period-2 orbit
+Y_re² = -½·Id on V_osc
+Fold = externalized witness
+Three subalgebra roles
+```
+
+Level 5: Mass Structure (§§44-45)
+
+```lean
+Gram eigenvalues: {0, 2, 2}
+Massless neutrino: τ=0
+Seesaw: φ²+0+φ⁻²=3
+Correction: δG = diag(ω²,0,0)
+Corrected eigenvalues: {0, 2, 5/2}
+```
+
+Level 6: Gap and Chaos (§§46-48)
+
+```lean
+Quarter-winding: φ^(N/4)=e^(π/2)
+Gap exponent: 3 < k < 4
+Chaos eigenvalues: 5/4 and 1/4
+Mass ratio formula: (25+8μ)/(5+12μ)
+μ_candidate = -1/16 → ratio ≈ 5.765
+```
+
+Level 7: Geometry and Fluctuation (§§49-52)
+
+```lean
+Fano projections: 12/5 ratio
+Stone observer: 1/4
+Middle SV²: mean ± std dev
+String tension fluctuation: √17/7
+Observer implies unit: Stone_λ = 2ω² = 1
+```
